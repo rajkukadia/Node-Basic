@@ -10,6 +10,8 @@ hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname+'/public')); //absolute path //static approach
 
+
+//This function is executed everytime an app receives a http request
 app.use((req, res, next)=>{
     var now  =  new Date().toString();
     var log = `${now}: ${req.method} ${req.url}`;
@@ -25,12 +27,12 @@ console.log(log);
 next();
 });
 
-app.use((req, res, next)=>{
-    res.render('maintenance/site-down.hbs', {
-        title: 'Site is down',
-    });
-
-});
+// app.use((req, res, next)=>{
+//     res.render('maintenance/site-down.hbs', {
+//         title: 'Site is down',
+//     });
+//
+// });
 
 
 app.get('/',(req, res)=>{
@@ -69,4 +71,6 @@ app.get('/bad', (req, res) => {
 
 
 
-app.listen(3000); //Bind the application to a port
+app.listen(3000, function(){
+    console.log("Server is listening for incoming requests!");
+}); //Bind the application to a port
