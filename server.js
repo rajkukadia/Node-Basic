@@ -36,9 +36,10 @@ next();
 
 
 app.get('/',(req, res)=>{
-    res.send('home');
-console.log('log');
-
+    res.render('home.hbs', {
+       pageTitle: 'Home Page',
+        welcomeMessage: 'Welcome to my website'
+    });
 });
 
 app.get('/about', (req, res)=> {
@@ -69,7 +70,12 @@ app.get('/bad', (req, res) => {
     }) ;
 });
 
-
+app.get('/projects', (req, res)=>{
+   res.render('projects.hbs', {
+       message: 'My project',
+       pageTitle: 'Projects'
+   }) ;
+});
 
 app.listen(3000, function(){
     console.log("Server is listening for incoming requests!");
