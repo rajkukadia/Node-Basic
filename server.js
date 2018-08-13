@@ -4,7 +4,7 @@ const fs = require('fs');
 
 
 var app = express();
-
+var port = process.env.port||3000;
 
 hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine', 'hbs');
@@ -77,6 +77,6 @@ app.get('/projects', (req, res)=>{
    }) ;
 });
 
-app.listen(3000, function(){
+app.listen(port, function(){
     console.log("Server is listening for incoming requests!");
 }); //Bind the application to a port
